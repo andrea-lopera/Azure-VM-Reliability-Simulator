@@ -42,8 +42,9 @@ vm_id = st.selectbox("Select VM", df['vm_id'].unique())
 vm_data = df[df['vm_id'] == vm_id].iloc[-1]
 
 # Prepare features (ensure same order as training)
-# features = ['cpu_util', 'mem_util', 'disk_io', 'net_latency', 'is_peak', 'cpu_mem_ratio', 'sys_failures']
 vm_features = vm_data[feature_names].values.reshape(1, -1)
+
+print(vm_features)
 
 prob = model.predict_proba(vm_features)[0][1]
 st.plotly_chart(px.bar(x=[prob], range_x=[0,1], title=f"Failure Probability: {prob:.2%}"))
@@ -105,5 +106,5 @@ with st.expander("View LLM-generated Scenarios"):
         
 # Raw telemetry data
 st.subheader("Recent Telemetry")
-st.dataframe(df[df['vm_id'] == vm_id].tail(10)[['cpu_util', 'mem_util', 'disk_io', 'net_latency', 'is_peak', 'cpu_mem_ratio', 'sys_failures']])
+st.dataframe(df[df['vm_id'] == vm_id].tail(10)[['cpu_util', 'mem_util', 'disk_io', 'net_latency', 'is_peak', 'cpu_mem_ratio', 'cumulative_failures']])
 
