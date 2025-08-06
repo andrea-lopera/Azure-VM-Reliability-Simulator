@@ -1,1 +1,0 @@
-cpu_util,mem_util,disk_io,net_latency,is_peak,cpu_mem_ratio,sys_failures
