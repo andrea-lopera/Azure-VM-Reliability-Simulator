@@ -1,0 +1,1 @@
+cumulative_failures,mem_util,net_latency,cpu_util_7d_avg,disk_io_7d_avg,hour,is_peak,cpu_mem_ratio,cpu_disk_interaction
